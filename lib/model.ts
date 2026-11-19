@@ -131,6 +131,9 @@ export interface BoardRow {
   token_status: 'pre-token';
   age_days: number | null;
   implied_value_usd: number;
+  launch_readiness?: number;
+  readiness_reason?: string;
+  readiness_parts?: { momentum: number; scale: number; maturity: number; breadth: number; category: number };
   model: {
     base_multiple: number;
     category_multiplier: number;
@@ -156,10 +159,23 @@ export interface RadarRow {
   listed_at: string | null;
   age_days: number | null;
   implied_value_usd: number;
+  launch_readiness?: number;
+  readiness_reason?: string;
+  readiness_parts?: { momentum: number; scale: number; maturity: number; breadth: number; category: number };
   category_multiplier: number;
   chain_multiplier: number;
   growth_multiplier: number;
   maturity_multiplier: number;
+}
+
+/** One of the board's top launch candidates: its rank by readiness times log implied value. */
+export interface LaunchCandidate {
+  rank: number;
+  slug: string;
+  name: string;
+  readiness: number;
+  implied_value_usd: number;
+  combined: number;
 }
 
 /** A live-token protocol: it already trades, so the board shows the market's own value, not a model's. */
@@ -189,6 +205,7 @@ export interface RadarData {
   watchlist_slugs: string[];
   rows: RadarRow[];
   live: LiveRow[];
+  launch_candidates?: LaunchCandidate[];
 }
 
 /** Why the snapshot is not one this model can score. */
