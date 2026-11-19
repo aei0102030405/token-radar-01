@@ -1,4 +1,4 @@
-/* Token Radar's plain theme. The five palette values, two radii and two families are the whole style;
+/* Token Radar's plain theme. The palette values, two radii and two families are the whole style;
    everything else is spacing, a hairline and a type step. */
 :root {
   --canvas: #f2f5f3;
@@ -7,6 +7,7 @@
   --muted: #5f6f67;
   --border: #d8e2dc;
   --accent: #0f7a5a;
+  --amber: #a97b12;
   --negative: #b23b2e;
   --radius-control: 8px;
   --radius-panel: 14px;
@@ -98,6 +99,9 @@ tbody tr[data-selected="true"] { background: color-mix(in srgb, var(--accent) 8%
 .neg { color: var(--negative); }
 .bar { width: 120px; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--border) 60%, var(--surface)); overflow: hidden; }
 .bar i { display: block; height: 100%; background: var(--accent); }
+.bar i.hot { background: var(--accent); }
+.bar i.warm { background: var(--amber); }
+.bar i.cool { background: var(--muted); }
 .implied { display: flex; align-items: center; gap: var(--step-2); }
 .status { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; white-space: nowrap; }
 .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
